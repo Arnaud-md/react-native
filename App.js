@@ -7,11 +7,40 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import MapView from 'react-native-maps';
+import {Marker, Circle} from 'react-native-maps';
 
 function HomeScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
+      <MapView
+        region={{
+          latitude: 45.188529,
+          longitude: 5.924524,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        style={styles.map} 
+      >
+        <Marker
+          coordinate={{
+            latitude: 45.199629,
+            longitude: 5.924524
+          }}
+          title={"Thomas"}
+          description={"Chez Arnaud"}
+        />
+        <Circle 
+          center={{
+            latitude: 45.188529,
+            longitude: 5.924524,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+          radius={2000}
+        />
+      </MapView>
     </View>
   );
 }
@@ -75,7 +104,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
+  map: {
+    width: '100%',
+    height: '100%',
+  },
   container2: {
     flex: 1,
     flexDirection: 'row',
